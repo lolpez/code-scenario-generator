@@ -4,8 +4,12 @@ block content
 	h1= title
 	.container
 		.section
-			p Enter your scenario
-			textarea#code-scenario(cols="30", rows="10")
+			p
+				| Enter your scenario 
+				button#paste-button paste from clipboard
+			textarea#code-scenario.code-textarea
 		.section
-			p Result
-			textarea#code-result(cols="30", rows="10")
+			p
+				| Result 
+				button#copy-button copy
+			textarea#code-result.code-textarea
