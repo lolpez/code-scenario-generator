@@ -2,4 +2,10 @@ extends layout
 
 block content
 	h1= title
-	p Welcome to #{title}
+	.container
+		.section
+			p Enter your scenario
+			textarea#code-scenario(cols="30", rows="10")
+		.section
+			p Result
+			textarea#code-result(cols="30", rows="10")

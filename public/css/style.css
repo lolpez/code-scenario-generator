@@ -1,0 +1,21 @@
+body {
+	padding: 50px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+	color: #00B7FF;
+}
+
+#code-scenario {
+	resize: vertical;
+}
+
+.container{
+	width: 100%;
+}
+
+.section{
+	width: 50%;
+	display: inline-block;
+}
