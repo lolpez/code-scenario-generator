@@ -8,6 +8,6 @@
     });
 
     socket.on("scenario-generated", (response) => {
-        codeResultElement.value = response.code;
+        codeResultElement.value = response.result;
     });
 })();
