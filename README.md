@@ -2,13 +2,13 @@
 Code scenario generator for Version One
 
 ## About
-<img src="" alt="Code Scenario Generator" height=100 />
+<img src="https://raw.githubusercontent.com/lolpez/code-scenario-generator/master/public/img/example.jpg" alt="Code Scenario Generator"/>
 
 Formates enumerated steps in Version One into C# commented lines ready to be pasted in Visual Studio. Say good-bye to word processing software.
 
 Just copy your steps in V1 and paste in "Enter your scenario" input and watch the magic!
 
-**Note:** This only works if the steps in Version One are enumerated by the built-in HTML editor.
+**Note:** This only works if the steps in Version One are enumerated by the built-in HTML editor or steps separated by line break.
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for Development environment.
