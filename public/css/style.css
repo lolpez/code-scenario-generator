@@ -10,7 +10,6 @@ a {
 .code-textarea {
 	resize: vertical;
 	width: 90%;
-	height: 200px;
 	min-height: 200px;
 }
 
