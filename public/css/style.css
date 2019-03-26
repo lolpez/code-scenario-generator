@@ -3,8 +3,10 @@ body {
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-	color: #00B7FF;
+.title{
+	text-decoration: none;
+	color: #123;
+	font-size: 2em;
 }
 
 .code-textarea {

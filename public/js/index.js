@@ -4,6 +4,7 @@
     const codeResultElement = document.getElementById("code-result");
     const pasteButtonElement = document.getElementById("paste-button");
     const copyButtonElement = document.getElementById("copy-button");
+    const stepsCountElement = document.getElementById("steps-count");
 
     codeScenarioElement.addEventListener("keyup", () => {
         sendData();
@@ -11,6 +12,7 @@
 
     socket.on("scenario-generated", (response) => {
         codeResultElement.value = response.result;
+        stepsCountElement.innerHTML = ` (${response.stepsCount} step${(response.stepsCount > 1) ? "s" : ""})`;
     });
 
     pasteButtonElement.addEventListener("click", () => {
@@ -30,6 +32,19 @@
     });
 
     function sendData() {
-        socket.emit("new-scenario", codeScenarioElement.value);
+        if (codeScenarioElement.value.length > 0) {
+            socket.emit("new-scenario", codeScenarioElement.value);
+        } else {
+            updateResult("", 0);
+        }
+    }
+
+    function updateResult(result, stepsCount) {
+        codeResultElement.value = result;
+        if (stepsCount > 0) {
+            stepsCountElement.innerHTML = ` (${stepsCount} step${(stepsCount > 1) ? "s" : ""})`;
+        } else {
+            stepsCountElement.innerHTML = "";
+        }
     }
 })();

@@ -11,11 +11,13 @@ const indexRouter = (io) => {
 		socket.on("new-scenario", (data) => {
 			const steps = data.split("\n");
 			var result = "";
-			for (var i = 0; i < steps.length; i++) {
-				result += `// ${i + 1}. ${steps[i]}\n\n`;
-			}
+			var stepsCount = 0;
+			steps.forEach((step) => {
+				stepsCount++;
+				result += `// ${stepsCount}. ${step}\n\n`;
+			});
 			io.emit("scenario-generated", {
-				steps: 11,
+				stepsCount: stepsCount,
 				result: result
 			});
 		});
