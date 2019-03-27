@@ -3,13 +3,13 @@ extends layout
 block content
 	.container
 		.section
-			p
+			h4
 				| Enter your scenario 
 				button#paste-button(aria-label='Paste the steps from your Clipboard', title="Paste the steps from your Clipboard") Paste from clipboard
 			textarea#code-scenario.code-textarea(aria-label='Steps', title="Steps")
 		.section
-			p
+			h4
 				| Result 
 				span#steps-count
-				button#copy-button(aria-label='Copy the result in your Clipboard', title="Copy the result in your Clipboard") Copy
+				button#copy-button(aria-label='Copy the result in your Clipboard', title="Copy the result in your Clipboard") Copy			
 			textarea#code-result.code-textarea(aria-label='Result', title="Result")

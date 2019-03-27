@@ -5,14 +5,14 @@
     const pasteButtonElement = document.getElementById("paste-button");
     const copyButtonElement = document.getElementById("copy-button");
     const stepsCountElement = document.getElementById("steps-count");
+    const loaderElement = document.getElementById("loader");
 
     codeScenarioElement.addEventListener("keyup", () => {
         sendData();
     });
 
     socket.on("scenario-generated", (response) => {
-        codeResultElement.value = response.result;
-        stepsCountElement.innerHTML = ` (${response.stepsCount} step${(response.stepsCount > 1) ? "s" : ""})`;
+        updateResult(response.result, response.stepsCount);
     });
 
     pasteButtonElement.addEventListener("click", () => {
@@ -32,6 +32,7 @@
     });
 
     function sendData() {
+        loaderElement.style.display = "inline-block";
         if (codeScenarioElement.value.length > 0) {
             socket.emit("new-scenario", codeScenarioElement.value);
         } else {
@@ -46,5 +47,6 @@
         } else {
             stepsCountElement.innerHTML = "";
         }
+        loaderElement.style.display = "none";
     }
 })();

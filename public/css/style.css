@@ -13,6 +13,7 @@ body {
 	resize: vertical;
 	width: 90%;
 	min-height: 200px;
+	margin-top: 10px;
 }
 
 .container{
@@ -45,4 +46,27 @@ body {
 	.github-corner .octo-arm{
 		animation:octocat-wave 560ms ease-in-out
 	}
+}
+
+#loader {
+	margin-left: 5px;
+    border: 3px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 3px solid #151513;
+    width: 15px;
+    height: 15px;
+	-webkit-animation: spin 0.5s linear infinite; /* Safari */
+	animation: spin 0.5s linear infinite;
+	display: none;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+	0% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); }
+}
+  
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
 }
