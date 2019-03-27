@@ -43,7 +43,7 @@
     function updateResult(result, stepsCount) {
         codeResultElement.value = result;
         if (stepsCount > 0) {
-            stepsCountElement.innerHTML = ` (${stepsCount} step${(stepsCount > 1) ? "s" : ""})`;
+            stepsCountElement.innerHTML = `(${stepsCount} step${(stepsCount > 1) ? "s" : ""}) `;
         } else {
             stepsCountElement.innerHTML = "";
         }
