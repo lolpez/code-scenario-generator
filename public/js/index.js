@@ -1,5 +1,4 @@
 (function () {
-    const socket = io("/socket-index");
     const codeScenarioElement = document.getElementById("code-scenario");
     const codeResultElement = document.getElementById("code-result");
     const pasteButtonElement = document.getElementById("paste-button");
@@ -8,18 +7,14 @@
     const loaderElement = document.getElementById("loader");
 
     codeScenarioElement.addEventListener("keyup", () => {
-        sendData();
-    });
-
-    socket.on("scenario-generated", (response) => {
-        updateResult(response.result, response.stepsCount);
+        convertScenario(codeScenarioElement.value);
     });
 
     pasteButtonElement.addEventListener("click", () => {
         navigator.clipboard.readText()
             .then((text) => {
                 codeScenarioElement.value = text;
-                sendData();
+                convertScenario(codeScenarioElement.value);
             })
             .catch((err) => {
                 alert("Failed to read clipboard contents");
@@ -31,22 +26,44 @@
         document.execCommand("copy");
     });
 
-    function sendData() {
-        loaderElement.style.display = "inline-block";
-        if (codeScenarioElement.value.length > 0) {
-            socket.emit("new-scenario", codeScenarioElement.value);
-        } else {
-            updateResult("", 0);
-        }
-    }
-
-    function updateResult(result, stepsCount) {
-        codeResultElement.value = result;
-        if (stepsCount > 0) {
-            stepsCountElement.innerHTML = `(${stepsCount} step${(stepsCount > 1) ? "s" : ""}) `;
+    function updateInterfaceResult(convertedScenario) {
+        codeResultElement.value = convertedScenario.result;
+        if (convertedScenario.stepsCount > 0) {
+            stepsCountElement.innerHTML = `(${convertedScenario.stepsCount} step${(convertedScenario.stepsCount > 1) ? "s" : ""}) `;
         } else {
             stepsCountElement.innerHTML = "";
         }
         loaderElement.style.display = "none";
+    }
+
+    function convertScenario(scenario) {
+        loaderElement.style.display = "inline-block";
+        if (scenario.length > 0) {
+            var steps = scenario.split("\n");
+            var result = "";
+            var stepsCount = 0;
+            steps.forEach((step) => {
+                stepsCount++;
+                result += `// ${stepsCount}. ${step}\n\n`;
+            });
+            updateInterfaceResult({
+                stepsCount: stepsCount,
+                result: result
+            });
+        } else {
+            updateInterfaceResult({
+                stepsCount: 0,
+                result: ""
+            });
+        }
+    }
+
+    // Service worker
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("sw.js").then((reg) => {
+            console.log("Service Worker Registered 🤩", reg.scope);
+        }).catch(function (err) {
+            console.log("Service Worker Failed to Register 😩", err);
+        });
     }
 })();
