@@ -13,3 +13,20 @@ block content
 				span#steps-count
 				button#copy-button(aria-label="Copy the result in your Clipboard", title="Copy the result in your Clipboard") Copy			
 			textarea#code-result.code-textarea(aria-label="Result", title="Result")
+	.container
+		.section
+			h4#configuration Advanced configuration
+			#configuration-body
+				label(for="rule") Step format: 
+				input#rule(type="text")
+				button#reset-rule Reset to default
+				p
+					| Description:
+					br
+					| Type strings inside curly brackets {} to display custom messages. I.e. {My step -->}
+					br
+					| Type reserved keys inside curly brackets to display the following:
+					ul
+						li {counter}: displays the step number.
+						li {step}: displays the step per line from the scenario.
+						li {br}: creates a breakline.
