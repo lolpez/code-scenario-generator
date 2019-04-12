@@ -2,7 +2,7 @@
     "background_color": "#123",
     "theme_color": "#123",
     "description": "Code scenario generator for Version One",
-    "display": "fullscreen",
+    "display": "standalone",
     "icons": [
         {
             "src": "/img/csg-logo.png",
