@@ -9,10 +9,11 @@
     const configurationElement = document.getElementById("configuration");
     const ruleElement = document.getElementById("rule");
     const ruleResetElement = document.getElementById("reset-rule");
+    const offlineElement = document.getElementById("offline");
 
     ruleElement.value = defaultRule;
 
-    codeScenarioElement.addEventListener("keyup", () => {
+    codeScenarioElement.addEventListener("keydown", () => {
         convertScenario(codeScenarioElement.value);
     });
 
@@ -113,6 +114,7 @@
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("sw.js").then((reg) => {
             console.log("Service Worker Registered 🤩", reg.scope);
+            offlineElement.innerHTML = "Ready to work offline";
         }).catch(function (err) {
             console.log("Service Worker Failed to Register 😩", err);
         });
